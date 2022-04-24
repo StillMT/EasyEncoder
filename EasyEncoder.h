@@ -22,7 +22,7 @@ EasyEncoder::EasyEncoder()
 
 bool EasyEncoder::begin(byte pinA, byte pinB)
 {
-	if (!digitalRead(pinA) && !digitalRead(pinB))
+	if (!digitalRead(pinA) || !digitalRead(pinB))
 		return false;
 	beginned = true;
 	EasyEncoder::pinA = pinA;
