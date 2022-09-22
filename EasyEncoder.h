@@ -7,10 +7,11 @@ class EasyEncoder
 {
 	private:
 		byte pinA, pinB;
-		bool lastState, beginned;
+		bool lastState, beginned, invert;
 	public:
 		EasyEncoder();
 		bool begin(byte pinA, byte pinB);
+		void invert(bool invert);
 		short check();
 };
 
@@ -30,6 +31,11 @@ bool EasyEncoder::begin(byte pinA, byte pinB)
 	return true;
 }
 
+void EasyEncoder::invert(bool invertt)
+{
+	invert = invertt;
+}
+
 short EasyEncoder::check()
 {
 	if (!beginned)
@@ -39,9 +45,9 @@ short EasyEncoder::check()
 	{
 		lastState = read;
 		if (digitalRead(pinB))
-			return -1;
+			return invert ? 1 : -1;
 		else
-			return 1;
+			return invert ? -1 : 1;
 	}
 	return 0;
 }
