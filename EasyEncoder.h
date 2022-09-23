@@ -1,13 +1,13 @@
 #ifndef EASYENCODER_H
 #define EASYENCODER_H
 
-#define EASYENCODERLIB_VER "1.0.0"
+#define EASYENCODERLIB_VER "1.0.1"
 
 class EasyEncoder
 {
 	private:
 		byte pinA, pinB;
-		bool lastState, beginned, invert;
+		bool lastState, beginned, inverted;
 	public:
 		EasyEncoder();
 		bool begin(byte pinA, byte pinB);
@@ -26,14 +26,15 @@ bool EasyEncoder::begin(byte pinA, byte pinB)
 	if (!digitalRead(pinA) || !digitalRead(pinB))
 		return false;
 	beginned = true;
+	inverted = false;
 	EasyEncoder::pinA = pinA;
 	EasyEncoder::pinB = pinB;
 	return true;
 }
 
-void EasyEncoder::invert(bool invertt)
+void EasyEncoder::invert(bool invert)
 {
-	invert = invertt;
+	inverted = invert;
 }
 
 short EasyEncoder::check()
@@ -45,9 +46,9 @@ short EasyEncoder::check()
 	{
 		lastState = read;
 		if (digitalRead(pinB))
-			return invert ? 1 : -1;
+			return inverted ? -1 : 1;
 		else
-			return invert ? -1 : 1;
+			return inverted ? 1 : -1;
 	}
 	return 0;
 }

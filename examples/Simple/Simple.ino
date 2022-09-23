@@ -8,6 +8,7 @@ void setup()
   pinMode(3, INPUT_PULLUP);       //
   if (!encoder.begin(2, 3))       //If pins aren't on INPUT_PULLUP
     while (true);                 //Loop forever (REMINDER: If you don't begin the encoder, the check method returns -2 forever.)
+  encoder.invert(false);          //Choose if you want to invert the encoder
   Serial.begin(9600);             //Begin the serial communication
 }
 
