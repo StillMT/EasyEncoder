@@ -1,3 +1,9 @@
+/*
+ *
+ *	Library created by StillMT
+ *
+*/
+
 #ifndef EASYENCODER_H
 #define EASYENCODER_H
 

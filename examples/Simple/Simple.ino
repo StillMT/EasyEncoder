@@ -1,3 +1,13 @@
+/*
+ *  Simple example of EasyEncoder library
+ *  
+ *  Created 28/08/2021
+ *  by StillMT 
+ *  Modified 24/09/2022
+ *  by StillMT
+ *  
+ */
+
 #include <EasyEncoder.h>          //Include EasyEncoder library
 
 EasyEncoder encoder;              //Create an instance of EasyEncoder class
