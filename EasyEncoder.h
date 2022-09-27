@@ -49,13 +49,11 @@ short EasyEncoder::check()
 		return -2;
 	bool read = digitalRead(pinA);
 	if (lastState && !read)
-	{
-		lastState = read;
 		if (digitalRead(pinB))
 			return inverted ? -1 : 1;
 		else
 			return inverted ? 1 : -1;
-	}
+	lastState = read;
 	return 0;
 }
 
